@@ -1,7 +1,4 @@
-@interface SPTNowPlayingInformationUnitViewController : UIViewController
-@property UIView *titleLabel;
-@property UIView *subtitleLabel;
-@end
+#import "Tweak.h"
 
 %hook SPTNowPlayingInformationUnitViewController
 -(void)viewDidLoad {
