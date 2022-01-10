@@ -1,3 +1,8 @@
+#import <UIKit/UIKit.h>
+
 @interface SPTNowPlayingInformationUnitViewController : UIViewController
-@property UIView *titleLabel, *subtitleLabel;
+@end
+
+@interface SPTEncoreLabel : UIView
+-(UIViewController *)_viewControllerForAncestor;
 @end
