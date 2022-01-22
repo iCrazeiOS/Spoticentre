@@ -6,3 +6,5 @@
 @interface SPTEncoreLabel : UIView
 -(UIViewController *)_viewControllerForAncestor;
 @end
+
+static SPTNowPlayingInformationUnitViewController *vc = nil;
