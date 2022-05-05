@@ -1,4 +1,5 @@
 ARCHS = arm64 arm64e
+export SDKVERSION = 12.4
 
 INSTALL_TARGET_PROCESSES = Spotify
 

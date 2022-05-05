@@ -13,7 +13,7 @@
 }
 %end
 
-%hook SPTEncoreLabel
+%hook SPTEncoreLegacyLabel
 -(void)_setText:(id)arg1 {
 	%orig;
 	if (vc && self._viewControllerForAncestor == vc) {

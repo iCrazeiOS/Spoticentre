@@ -3,7 +3,7 @@
 @interface SPTNowPlayingInformationUnitViewController : UIViewController
 @end
 
-@interface SPTEncoreLabel : UIView
+@interface SPTEncoreLegacyLabel : UIView
 -(UIViewController *)_viewControllerForAncestor;
 @end
 
