@@ -1,5 +1,6 @@
-ARCHS = arm64 arm64e
-export SDKVERSION = 12.4
+export PREFIX = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/
+export SDKVERSION = 14.4
+export ARCHS = arm64
 
 INSTALL_TARGET_PROCESSES = Spotify
 

@@ -1,43 +1,17 @@
-// this code is super bad compared to the original release
-// but i just wanna get out a quick patch for the crashes
+#import <UIKit/UIKit.h>
 
-// plus, it actually works even better than the older version
-// ('like song' button no longer gets hidden)
-
-#import "Tweak.h"
+@interface SPTNowPlayingInformationUnitViewController : UIViewController
+@end
 
 %hook SPTNowPlayingInformationUnitViewController
--(id)setStackView:(id)arg1 {
-	vc = self;
-	return %orig;
-}
-%end
+-(void)setupAddButtonIfNeeded {
+	UIView *view = self.view.subviews[0].subviews[0].subviews[0];
+	UIView *track = view.subviews[0].subviews[0].subviews[0].subviews[0];
+	UIView *artist = view.subviews[1].subviews[0].subviews[2].subviews[0].subviews[0].subviews[0];
 
-%hook SPTEncoreLegacyLabel
--(void)_setText:(id)arg1 {
+	[self.view addConstraint:[NSLayoutConstraint constraintWithItem:track attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1.f constant:0.f]];
+	[self.view addConstraint:[NSLayoutConstraint constraintWithItem:artist attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1.f constant:0.f]];
+
 	%orig;
-	if (vc && self._viewControllerForAncestor == vc) {
-		[vc.view addConstraint:[NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:vc.view attribute:NSLayoutAttributeCenterX multiplier:1.f constant:0.f]];
-	}
-}
-%end
-
-
-
-// bad fix for the enhance button
-// ideally, I wanted to hook EncoreMobile.AutoLayoutStackView, and get its children
-// spotify just didn't like us doing this though :/
-
-%hook UIImageView
--(void)_updateVisibilityAndFrameOfPlaceholderView {
-	%orig;
-	if ([self.superview.superview class] == objc_getClass("EncoreMobile.AutoLayoutStackView")) {
-		CGRect frame = self.frame;
-		// move enhance button closer to the artist label
-		frame.origin.x += frame.size.width - frame.size.height;
-		// fix the button's width
-		frame.size.width = frame.size.height;
-		self.frame = frame;
-	}
 }
 %end
