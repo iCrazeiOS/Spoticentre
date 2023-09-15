@@ -1,6 +1,6 @@
 Package: com.icraze.spoticentre
 Name: Spoticentre
-Version: 3.1
+Version: 3.2
 Architecture: iphoneos-arm
 Description: Centre the song/artist name in the Spotify app
 Maintainer: iCraze
