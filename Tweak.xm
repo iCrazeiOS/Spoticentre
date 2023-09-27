@@ -47,7 +47,9 @@
 	UIView *artist = artistIntermediate.subviews[2].subviews[0];
 
 	// hide buttons on the right side
-	viewIntermediate.subviews[1].hidden = YES;
+	if (viewIntermediate.subviews.count > 1) {
+		viewIntermediate.subviews[1].hidden = YES;
+	}
 
 	// fix issue with enhance/smart shuffle icon being stretched
 	for (UIView *subview in artistIntermediate.subviews) {
